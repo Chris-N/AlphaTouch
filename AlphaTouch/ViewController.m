@@ -9,19 +9,40 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
 @end
 
 @implementation ViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor yellowColor];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadView  // Called first time view property accessed
+{
+    //UIView *view = [[UIView alloc] initWithFrame:viewRect];
+    //view.backgroundColor = [UIColor yellowColor];
+    //self.viewController.view = view;
+    
+    CGRect viewRect = [[UIScreen mainScreen] bounds];
+    UIView *view = [[UIView alloc] initWithFrame:viewRect];
+    self.view = view;
+    
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    self.view.alpha = ((double)arc4random() / 0x100000000);
+    NSLog(@"The touches ended!");
 }
 
 @end
