@@ -19,6 +19,11 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor yellowColor];
+    
+    UIButton *firstButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    firstButton.frame = CGRectMake(150, 100, 100, 44);
+    [firstButton setTitle:@"Click Me!" forState:UIControlStateNormal];
+    [self.view addSubview:firstButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -41,7 +46,7 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    self.view.alpha = ((double)arc4random() / 0x100000000);
+//    self.view.alpha = ((double)arc4random() / 0x100000000);
     NSLog(@"The touches ended!");
 }
 
