@@ -19,10 +19,18 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor yellowColor];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 80, 100, 44)];
+    label.text = @"Welcome!";
+    [self.view addSubview:label];
+    
     
     UIButton *firstButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     firstButton.frame = CGRectMake(150, 100, 100, 44);
+    firstButton.layer.cornerRadius = 10;
+    firstButton.clipsToBounds = YES;
     [firstButton setTitle:@"Click Me!" forState:UIControlStateNormal];
+    [firstButton setTitle:@"Ouch!" forState:UIControlStateHighlighted];
+    [firstButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:firstButton];
 }
 
@@ -48,6 +56,12 @@
 {
 //    self.view.alpha = ((double)arc4random() / 0x100000000);
     NSLog(@"The touches ended!");
+}
+
+- (void)buttonPressed:(UIButton *)sender
+{
+    NSLog(@"Button pressed, sender: %@", sender);
+    self.view.alpha = ((double)arc4random() / 0x100000000);
 }
 
 @end

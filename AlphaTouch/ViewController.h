@@ -10,6 +10,7 @@
 
 @interface ViewController : UIViewController
 
+- (void) buttonPressed:(UIButton *)sender;
 
 @end
 
