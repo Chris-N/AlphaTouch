@@ -10,6 +10,9 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) UIButton *halfButton;
+@property (weak, nonatomic) UIButton *fullButton;
+
 - (void) buttonPressed:(UIButton *)sender;
 
 @end

@@ -24,14 +24,26 @@
     [self.view addSubview:label];
     
     
-    UIButton *firstButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    firstButton.frame = CGRectMake(150, 100, 100, 44);
-    firstButton.layer.cornerRadius = 10;
-    firstButton.clipsToBounds = YES;
-    [firstButton setTitle:@"Click Me!" forState:UIControlStateNormal];
-    [firstButton setTitle:@"Ouch!" forState:UIControlStateHighlighted];
-    [firstButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:firstButton];
+    self.halfButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.halfButton.frame = CGRectMake(150, 100, 100, 44);
+    self.halfButton.backgroundColor = [UIColor whiteColor];
+    self.halfButton.layer.cornerRadius = 10;
+    self.halfButton.clipsToBounds = YES;
+    [self.halfButton setTitle:@"Click Me!" forState:UIControlStateNormal];
+    [self.halfButton setTitle:@"Ouch!" forState:UIControlStateHighlighted];
+    [self.halfButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    self.fullButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.fullButton.frame = CGRectMake(150, 300, 100, 44);
+    self.fullButton.backgroundColor = [UIColor whiteColor];
+    self.fullButton.layer.cornerRadius = 10;
+    self.fullButton.clipsToBounds = YES;
+    [self.fullButton setTitle:@"Make 100%" forState:UIControlStateNormal];
+    [self.fullButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:self.halfButton];
+    [self.view addSubview:self.fullButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,7 +73,12 @@
 - (void)buttonPressed:(UIButton *)sender
 {
     NSLog(@"Button pressed, sender: %@", sender);
-    self.view.alpha = ((double)arc4random() / 0x100000000);
+    //self.view.alpha = ((double)arc4random() / 0x100000000);
+    if([sender isEqual:self.fullButton]){
+        self.view.alpha = 1;
+    }else{
+        self.view.alpha = 0.5;
+    }
 }
 
 @end
